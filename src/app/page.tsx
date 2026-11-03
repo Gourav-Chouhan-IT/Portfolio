@@ -1,12 +1,11 @@
 import Link from "next/link"
 import { PERSON, STACK } from "@/lib/constants"
-import { FlowFieldBackground } from "@/components/ui/FlowFieldBackground"
+import { FeaturedProjects } from "@/components/sections/FeaturedProjects"
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-obsidian text-primary">
+    <main className="min-h-screen text-primary">
       <section className="relative isolate min-h-[100svh] overflow-hidden">
-        <FlowFieldBackground />
         <div className="relative z-10 mx-auto grid min-h-[100svh] max-w-7xl content-center gap-10 px-6 pb-12 pt-32 sm:gap-12 sm:px-10 sm:pb-16 lg:grid-cols-[minmax(0,1.8fr)_minmax(18rem,0.8fr)] lg:gap-16 lg:px-14">
           <div className="hero-copy-glow relative isolate flex min-w-0 flex-col justify-center py-4 sm:py-8 lg:py-12">
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
@@ -91,6 +90,7 @@ export default function Home() {
           </aside>
         </div>
       </section>
+      <FeaturedProjects />
     </main>
   )
 }

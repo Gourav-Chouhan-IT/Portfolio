@@ -74,7 +74,7 @@ export function FlowFieldBackground() {
 
   useEffect(() => {
     const canvas = canvasRef.current
-    const context = canvas?.getContext("2d", { alpha: false })
+    const context = canvas?.getContext("2d", { alpha: true })
     if (!canvas || !context) return
 
     const reducedMotion = window.matchMedia(
@@ -102,8 +102,7 @@ export function FlowFieldBackground() {
       canvas.width = Math.round(width * pixelRatio)
       canvas.height = Math.round(height * pixelRatio)
       context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0)
-      context.fillStyle = "#080808"
-      context.fillRect(0, 0, width, height)
+      context.clearRect(0, 0, width, height)
 
       const particleCount = isMobile
         ? Math.max(50, Math.min(100, Math.floor((width * height) / 8500)))
@@ -127,8 +126,10 @@ export function FlowFieldBackground() {
       }
       lastFrameTime = timestamp
 
-      context.fillStyle = "rgba(8, 8, 8, 0.2)"
+      context.globalCompositeOperation = "destination-out"
+      context.fillStyle = "rgba(0, 0, 0, 0.12)"
       context.fillRect(0, 0, width, height)
+      context.globalCompositeOperation = "source-over"
 
       let blueCount = 0
       let lightCount = 0
@@ -251,7 +252,7 @@ export function FlowFieldBackground() {
     <canvas
       ref={canvasRef}
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 z-0 h-full w-full"
+      className="absolute inset-0 h-full w-full"
     />
   )
 }

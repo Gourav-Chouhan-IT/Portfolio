@@ -1,8 +1,9 @@
+import Link from "next/link"
 import { PROJECTS } from "@/lib/constants"
 
 export default function LabPage() {
   const researchProjects = PROJECTS.filter(
-    (project) => project.status === "Research",
+    (project) => project.slug === "ai-research-tool",
   )
 
   return (
@@ -22,11 +23,11 @@ export default function LabPage() {
           {researchProjects.length > 0 ? (
             researchProjects.map((project) => (
               <article
-                key={project.id}
+                key={project.slug}
                 className="rounded-xl border border-grid bg-surface p-6"
               >
                 <p className="font-mono text-xs uppercase tracking-widest text-muted">
-                  {project.year} · Research
+                  {project.year} · {project.status}
                 </p>
                 <h2 className="mt-3 font-serif text-3xl">{project.name}</h2>
                 <p className="mt-3 leading-7 text-muted">
@@ -35,6 +36,12 @@ export default function LabPage() {
                 <p className="mt-4 font-mono text-xs leading-6 text-muted">
                   {project.stack.join(" · ")}
                 </p>
+                <Link
+                  href={project.caseStudy}
+                  className="mt-5 inline-block text-sm font-medium text-accent hover:underline"
+                >
+                  View research
+                </Link>
               </article>
             ))
           ) : (

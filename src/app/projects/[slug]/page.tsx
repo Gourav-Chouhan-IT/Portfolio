@@ -6,22 +6,15 @@ type ProjectPageProps = {
   params: Promise<{ slug: string }>
 }
 
-function usableUrl(url: string | null) {
-  return url && url !== "https://" ? url : null
-}
-
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params
-  const project: (typeof PROJECTS)[number] | undefined = PROJECTS.find(
+  const project = PROJECTS.find(
     (item) => item.slug.toLowerCase() === slug.toLowerCase(),
   )
 
   if (project === undefined) {
     notFound()
   }
-  const liveUrl = usableUrl(project.live)
-  const githubUrl = usableUrl(project.github)
-
   return (
     <main className="min-h-screen bg-obsidian px-6 pb-20 pt-36 text-primary sm:px-10 lg:px-14">
       <article className="mx-auto max-w-4xl">
@@ -34,7 +27,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
         <header className="mt-12 border-b border-grid pb-10">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
-            {project.status} · {project.year}
+            {project.year} · {project.status}
           </p>
           <h1 className="mt-4 font-serif text-5xl leading-tight sm:text-7xl">
             {project.name}
@@ -64,16 +57,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-muted">
             Case study
           </h2>
-          <p className="leading-7 text-muted">
-            A detailed write-up for this project is being prepared. Check back
-            soon for the background, implementation decisions, and results.
-          </p>
+          <p className="leading-7 text-muted">{project.descriptor}</p>
         </section>
 
         <div className="flex flex-wrap gap-5 border-t border-grid pt-8">
-          {liveUrl && (
+          {project.live && (
             <a
-              href={liveUrl}
+              href={project.live}
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm font-medium text-accent hover:underline"
@@ -81,9 +71,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               Visit live project
             </a>
           )}
-          {githubUrl && (
+          {project.github && (
             <a
-              href={githubUrl}
+              href={project.github}
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm font-medium text-accent hover:underline"

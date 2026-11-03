@@ -4,6 +4,7 @@ import { GeistMono } from "geist/font/mono"
 import { Cormorant_Garamond } from "next/font/google"
 import { Navbar } from "@/components/ui/Navbar"
 import { SplashScreen } from "@/components/ui/SplashScreen"
+import { FlowFieldBackground } from "@/components/ui/FlowFieldBackground"
 import "./globals.css"
 
 const editorialSerif = Cormorant_Garamond({
@@ -30,7 +31,10 @@ export default function RootLayout({
       className={`${GeistSans.variable} ${GeistMono.variable} ${editorialSerif.variable} dark`}
       suppressHydrationWarning
     >
-      <body className="bg-obsidian font-sans text-primary antialiased">
+      <body className="font-sans text-primary antialiased">
+        <div className="pointer-events-none fixed inset-0 -z-10 h-screen w-screen overflow-hidden">
+          <FlowFieldBackground />
+        </div>
         <SplashScreen />
         <Navbar />
         {children}

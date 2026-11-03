@@ -14,7 +14,7 @@ export default function ArchivePage() {
         <ul className="mt-10 divide-y divide-grid border-y border-grid">
           {PROJECTS.map((project) => (
             <li
-              key={project.id}
+              key={project.slug}
               className="flex flex-col gap-3 py-6 sm:flex-row sm:items-center sm:justify-between"
             >
               <div>

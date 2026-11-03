@@ -1,11 +1,9 @@
-// src/lib/constants.ts
-
 export const PERSON = {
   name: "Gourav Chouhan",
   role: "Full-Stack Developer & ML Researcher",
   email: "gourav.chouhan.it@gmail.com",
   github: "https://github.com/Gourav-Chouhan-IT",
-  linkedin: "https://www.linkedin.com/in/gourav-chouhan-071036374/", 
+  linkedin: "https://www.linkedin.com/in/gourav-chouhan-071036374/",
   college: "VIT Bhopal",
   degree: "B.Tech Computer Science",
   cgpa: "8.22",
@@ -14,7 +12,7 @@ export const PERSON = {
   currentlyBuilding: {
     name: "Portfolio Website",
     description: "The one you're looking at right now",
-    github: "https://github.com/Gourav-Chouhan-IT/gourav-portfolio",
+    github: "https://github.com/Gourav-Chouhan-IT/Portfolio",
   },
 } as const
 
@@ -23,56 +21,77 @@ export const PROJECTS = [
     id: "01",
     slug: "reelify",
     name: "Reelify",
-    descriptor: "AI-powered caption and hook generator for Instagram creators",
-    stack: ["Next.js", "FastAPI", "Gemini 2.5 Flash", "Python"],
+    descriptor:
+      "AI-powered content strategy tool for Instagram micro-creators that analyzes reels and generates personalized playbooks and PDF reports",
+    stack: [
+      "React",
+      "Vite",
+      "Python",
+      "FastAPI",
+      "Gemini 2.5 Flash",
+      "yt-dlp",
+      "ReportLab",
+    ],
     status: "Live",
     caseStudy: "/projects/reelify",
-    live: "https://", // add live url
-    github: "https://",
+    live: "https://reelify-six.vercel.app",
+    github: "https://github.com/Gourav-Chouhan-IT",
     year: "2025",
   },
   {
     id: "02",
-    slug: "cv-research",
-    name: "Computer Vision Research",
-    descriptor: "YOLOv8s vs Vision Transformer on PASCAL VOC 2012",
-    stack: ["Python", "YOLOv8", "PyTorch", "PASCAL VOC"],
-    status: "Research",
-    caseStudy: "/projects/cv-research",
+    slug: "commhub",
+    name: "CommHub",
+    descriptor:
+      "Multi-channel messaging platform for a real client: WhatsApp, Gmail and SMS in one dashboard",
+    stack: ["React", "Node.js", "PostgreSQL", "Prisma", "Redis"],
+    status: "In Progress",
+    caseStudy: "/projects/commhub",
     live: null,
-    github: "https://",
-    year: "2025",
+    github: "https://github.com/Gourav-Chouhan-IT/Portfolio",
+    year: "2026",
   },
   {
     id: "03",
-    slug: "health-dashboard",
-    name: "Health Dashboard",
-    descriptor: "Real-time biometric monitoring from Arduino to React",
-    stack: ["React", "Socket.IO", "Arduino", "Node.js"],
-    status: "Live",
-    caseStudy: "/projects/health-dashboard",
-    live: "https://",
-    github: "https://",
-    year: "2024",
+    slug: "ai-research-tool",
+    name: "AI Research Tool",
+    descriptor:
+      "Comparative analysis of YOLOv8s and Vision Transformers on PASCAL VOC 2012 and plant disease classification",
+    stack: ["Python", "FastAPI", "PyTorch", "YOLOv8", "ViT-Base", "Render"],
+    status: "Research",
+    caseStudy: "/projects/ai-research-tool",
+    live: null,
+    github: "https://github.com/Gourav-Chouhan-IT",
+    year: "2026",
   },
   {
     id: "04",
-    slug: "Focus-Map",
+    slug: "focus-map",
     name: "Focus Map",
-    descriptor: "MERN + TypeScript CRM with JWT auth and RBAC",
-    stack: ["MongoDB", "Express", "React", "TypeScript", "Docker"],
+    descriptor:
+      "Real-time eye-tracking heatmap visualizer running entirely in the browser via WebGazer.js",
+    stack: ["HTML", "CSS", "JavaScript", "WebGazer.js"],
     status: "Live",
     caseStudy: "/projects/focus-map",
-    live: "https://",
-    github: "https://",
+    live: null,
+    github: "https://github.com/Gourav-Chouhan-IT/Focus-Map",
     year: "2024",
   },
 ] as const
 
 export const STACK = [
-  "Next.js", "TypeScript", "React", "Node.js",
-  "Python", "FastAPI", "MongoDB", "PostgreSQL",
-  "Docker", "Arduino", "TensorFlow.js", "Tailwind CSS",
+  "Next.js",
+  "TypeScript",
+  "React",
+  "Node.js",
+  "Python",
+  "FastAPI",
+  "PostgreSQL",
+  "Prisma",
+  "Redis",
+  "PyTorch",
+  "Docker",
+  "Tailwind CSS",
 ] as const
 
 export const NAV_LINKS = [
@@ -81,4 +100,4 @@ export const NAV_LINKS = [
   { label: "Lab", href: "/lab", external: false },
   { label: "Archive", href: "/archive", external: false },
   { label: "Contact", href: "/contact", external: false },
-]
+] as const
