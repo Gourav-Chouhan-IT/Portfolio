@@ -4,6 +4,7 @@
   /* ── Fonts ── */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-editorial-serif);
 
   /* ── Obsidian Dark ── */
   --color-obsidian: #080808;
@@ -13,10 +14,10 @@
 
   /* ── Text ── */
   --color-primary: #f0eee6;
-  --color-muted: #888888;
+  --color-muted: #94a3b8;
 
   /* ── Accent ── */
-  --color-accent: #2563eb;
+  --color-accent: #5b82ff;
 
   /* ── Editorial Light ── */
   --color-paper: #f5f2ec;
@@ -29,21 +30,41 @@
   --tracking-ultra-wide: 0.4em;
 }
 
-/* Base styles */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 html {
-  background-color: #080808;
-  color: #f0eee6;
+  background-color: var(--color-obsidian);
+  color: var(--color-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background-color: #2563eb;
-  color: #ffffff;
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash-screen {
+    display: none;
+  }
+}
+
+.hero-copy-glow::before {
+  position: absolute;
+  z-index: -1;
+  inset: -3rem -2rem;
+  content: "";
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 42% 50%,
+    color-mix(in srgb, var(--color-obsidian) 94%, transparent) 0%,
+    color-mix(in srgb, var(--color-obsidian) 78%, transparent) 42%,
+    transparent 76%
+  );
+  filter: blur(20px);
+}
+
+@media (max-width: 639px) {
+  .hero-copy-glow::before {
+    inset: -2rem -1rem;
+  }
 }

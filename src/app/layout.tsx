@@ -1,18 +1,22 @@
 import type { Metadata } from "next"
 import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
+import { Cormorant_Garamond } from "next/font/google"
+import { Navbar } from "@/components/ui/Navbar"
+import { SplashScreen } from "@/components/ui/SplashScreen"
 import "./globals.css"
+
+const editorialSerif = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-editorial-serif",
+  display: "swap",
+})
 
 export const metadata: Metadata = {
   title: "Gourav Chouhan — Full-Stack Developer & ML Researcher",
-  description:
-    "Portfolio of Gourav Chouhan. Full-stack developer and ML researcher at VIT Bhopal.",
-  openGraph: {
-    title: "Gourav Chouhan",
-    description: "Full-Stack Developer & ML Researcher",
-    url: "https://gourav.dev", // update with your actual domain
-    siteName: "Gourav Chouhan",
-  },
+  description: "Portfolio of Gourav Chouhan.",
 }
 
 export default function RootLayout({
@@ -23,10 +27,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable} dark`}
+      className={`${GeistSans.variable} ${GeistMono.variable} ${editorialSerif.variable} dark`}
       suppressHydrationWarning
     >
-      <body className="bg-obsidian text-primary font-sans antialiased">
+      <body className="bg-obsidian font-sans text-primary antialiased">
+        <SplashScreen />
+        <Navbar />
         {children}
       </body>
     </html>

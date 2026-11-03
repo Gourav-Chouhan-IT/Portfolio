@@ -5,11 +5,11 @@ export const PERSON = {
   role: "Full-Stack Developer & ML Researcher",
   email: "gourav.chouhan.it@gmail.com",
   github: "https://github.com/Gourav-Chouhan-IT",
-  linkedin: "https://linkedin.com/in/", // add your linkedin
+  linkedin: "https://www.linkedin.com/in/gourav-chouhan-071036374/", 
   college: "VIT Bhopal",
   degree: "B.Tech Computer Science",
   cgpa: "8.22",
-  year: "2nd Year · 2024–2028",
+  year: "3rd Year · 2024–2028",
   resumeUrl: "/resume.pdf",
   currentlyBuilding: {
     name: "Portfolio Website",
@@ -57,12 +57,12 @@ export const PROJECTS = [
   },
   {
     id: "04",
-    slug: "smart-leads",
-    name: "Smart Leads Dashboard",
+    slug: "Focus-Map",
+    name: "Focus Map",
     descriptor: "MERN + TypeScript CRM with JWT auth and RBAC",
     stack: ["MongoDB", "Express", "React", "TypeScript", "Docker"],
     status: "Live",
-    caseStudy: "/projects/smart-leads",
+    caseStudy: "/projects/focus-map",
     live: "https://",
     github: "https://",
     year: "2024",
@@ -76,8 +76,9 @@ export const STACK = [
 ] as const
 
 export const NAV_LINKS = [
-  { label: "Work", href: "/#work" },
-  { label: "Lab", href: "/lab" },
-  { label: "Archive", href: "/archive" },
-  { label: "Resume", href: "/resume.pdf", external: true },
-] as const
+  { label: "About", href: "/about", external: false },
+  { label: "Work", href: "/#work", external: false },
+  { label: "Lab", href: "/lab", external: false },
+  { label: "Archive", href: "/archive", external: false },
+  { label: "Contact", href: "/contact", external: false },
+]
