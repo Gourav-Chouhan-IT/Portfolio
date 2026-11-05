@@ -31,10 +31,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable} ${editorialSerif.variable}`}
+      data-scroll-behavior="smooth"
+      className={`no-scrollbar ${GeistSans.variable} ${GeistMono.variable} ${editorialSerif.variable}`}
       suppressHydrationWarning
     >
-      <body className="font-sans text-primary antialiased">
+      <body className="no-scrollbar overflow-x-hidden bg-obsidian font-sans text-primary antialiased">
         <ThemeProvider>
           <div className="pointer-events-none fixed inset-0 -z-10 h-screen w-screen overflow-hidden">
             <FlowFieldBackground />

@@ -71,7 +71,9 @@ export default function ContactPage() {
           </a>
         </div>
 
-        <ContactForm />
+        <div id="contact" className="scroll-mt-28">
+          <ContactForm />
+        </div>
       </section>
     </main>
   )

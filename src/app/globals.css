@@ -1,6 +1,15 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 @theme {
   /* ── Fonts ── */
   --font-sans: var(--font-geist-sans);

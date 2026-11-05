@@ -9,7 +9,7 @@ const NAME_EXPANSION_DURATION = 400
 const NAME_EXPANSION_STAGGER = 50
 const NAME_HOLD_DURATION = 600
 const SPLIT_DURATION = 250
-const INTRO_SESSION_KEY = "hasSeenIntro"
+const INTRO_SESSION_KEY = "visited"
 
 function subscribeToMotionPreference(onChange: () => void) {
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)")
@@ -33,15 +33,19 @@ export function SplashScreen() {
   const [splashState, setSplashState] = useState<"checking" | "show" | "skip">(
     "checking",
   )
+  const [mounted, setMounted] = useState(false)
   const [showFullName, setShowFullName] = useState(false)
   const [isRevealing, setIsRevealing] = useState(false)
   const [isFinished, setIsFinished] = useState(false)
 
   useEffect(() => {
-    const hasSeenIntro = sessionStorage.getItem(INTRO_SESSION_KEY) === "true"
-    // This state update occurs after hydration to keep server and client markup consistent.
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setSplashState(hasSeenIntro ? "skip" : "show")
+    const frame = window.requestAnimationFrame(() => {
+      const visited = sessionStorage.getItem(INTRO_SESSION_KEY) === "true"
+      setSplashState(visited ? "skip" : "show")
+      setMounted(true)
+    })
+
+    return () => window.cancelAnimationFrame(frame)
   }, [])
 
   useEffect(() => {
@@ -71,21 +75,30 @@ export function SplashScreen() {
     }
   }, [reducedMotion, splashState])
 
+  if (!mounted) {
+    return (
+      <div
+        aria-hidden="true"
+        className="splash-screen fixed inset-0 z-[9999] bg-[#080808]"
+      />
+    )
+  }
+
   if (splashState !== "show" || reducedMotion || isFinished) return null
 
   return (
     <div
       aria-hidden="true"
-      className="splash-screen pointer-events-none fixed inset-0 z-[9999]"
+      className="splash-screen pointer-events-none fixed inset-0 z-[9999] bg-[#080808]"
     >
       <motion.div
-        className="absolute inset-x-0 top-0 h-1/2 bg-obsidian"
+        className="absolute inset-x-0 top-0 h-1/2 bg-[#080808]"
         initial={{ y: "0%" }}
         animate={{ y: isRevealing ? "-100%" : "0%" }}
         transition={{ duration: SPLIT_DURATION / 1000, ease: SPLIT_EASE }}
       />
       <motion.div
-        className="absolute inset-x-0 bottom-0 h-1/2 bg-obsidian"
+        className="absolute inset-x-0 bottom-0 h-1/2 bg-[#080808]"
         initial={{ y: "0%" }}
         animate={{ y: isRevealing ? "100%" : "0%" }}
         transition={{ duration: SPLIT_DURATION / 1000, ease: SPLIT_EASE }}
@@ -106,7 +119,7 @@ export function SplashScreen() {
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.25, ease: "easeOut" }}
-          className="flex items-center whitespace-nowrap font-serif text-5xl tracking-[-0.06em] text-primary sm:text-6xl"
+          className="flex items-center whitespace-nowrap font-serif text-5xl tracking-[-0.06em] text-white dark:text-primary sm:text-6xl"
         >
           <span className="inline-flex items-baseline">
             <span>G</span>

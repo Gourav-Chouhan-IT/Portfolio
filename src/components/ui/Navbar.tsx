@@ -18,6 +18,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const [activeSection, setActiveSection] = useState<string | null>(null)
 
   useEffect(() => {
     const mountFrame = window.requestAnimationFrame(() => setMounted(true))
@@ -28,6 +29,38 @@ export function Navbar() {
       window.removeEventListener("scroll", handleScroll)
     }
   }, [])
+
+  useEffect(() => {
+    if (!mounted || pathname !== "/") return
+
+    let observer: IntersectionObserver | undefined
+    const frame = window.requestAnimationFrame(() => {
+      const workSection = document.getElementById("work")
+      if (!workSection) return
+
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry) return
+          const rect = entry.boundingClientRect
+          const crossesViewportThreshold =
+            rect.top < window.innerHeight * 0.85 && rect.bottom > 0
+          setActiveSection(
+            entry.isIntersecting && crossesViewportThreshold ? "work" : null,
+          )
+        },
+        {
+          rootMargin: "-15% 0px -15% 0px",
+          threshold: 0.1,
+        },
+      )
+      observer.observe(workSection)
+    })
+
+    return () => {
+      window.cancelAnimationFrame(frame)
+      observer?.disconnect()
+    }
+  }, [mounted, pathname])
 
   return (
     <nav
@@ -48,7 +81,11 @@ export function Navbar() {
         <ul className="hidden items-center gap-x-5 lg:flex">
           {NAV_LINKS.map((link) => {
             const href = getNavigationHref(link.href)
-            const linkPath = href.split("#", 1)[0] || "/"
+            const [linkPathname, linkHash] = href.split("#", 2)
+            const linkPath = linkPathname || "/"
+            const isActive = linkHash
+              ? pathname === linkPath && activeSection === linkHash
+              : pathname === linkPath
 
             return (
               <li key={link.label}>
@@ -65,8 +102,9 @@ export function Navbar() {
                 ) : (
                   <Link
                     href={href}
+                    aria-current={isActive ? "page" : undefined}
                     className={`whitespace-nowrap font-mono text-xs tracking-widest uppercase transition-colors duration-200 hover:text-primary ${
-                      pathname === linkPath ? "text-primary" : "text-muted"
+                      isActive ? "text-primary" : "text-muted"
                     }`}
                   >
                     {link.label}
@@ -125,7 +163,11 @@ export function Navbar() {
         >
           {NAV_LINKS.map((link) => {
             const href = getNavigationHref(link.href)
-            const linkPath = href.split("#", 1)[0] || "/"
+            const [linkPathname, linkHash] = href.split("#", 2)
+            const linkPath = linkPathname || "/"
+            const isActive = linkHash
+              ? pathname === linkPath && activeSection === linkHash
+              : pathname === linkPath
 
             return (
               <li key={link.label}>
@@ -144,8 +186,9 @@ export function Navbar() {
                   <Link
                     href={href}
                     onClick={() => setMenuOpen(false)}
+                    aria-current={isActive ? "page" : undefined}
                     className={`block rounded-lg px-3 py-3 font-mono text-xs tracking-widest uppercase transition-colors hover:bg-lifted hover:text-primary ${
-                      pathname === linkPath ? "text-primary" : "text-muted"
+                      isActive ? "text-primary" : "text-muted"
                     }`}
                   >
                     {link.label}
