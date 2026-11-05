@@ -45,7 +45,7 @@ const milestones = [
 export function Timeline() {
   return (
     <section aria-labelledby="journey-heading" className="mt-16 sm:mt-20">
-      <div className="border-b border-white/[0.08] pb-5">
+      <div className="border-b border-grid pb-5">
         <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
           Experience / 01
         </p>
@@ -60,10 +60,10 @@ export function Timeline() {
         {milestones.map((milestone) => (
           <li
             key={milestone.title}
-            className="relative grid gap-2 border-l border-white/[0.1] py-5 pl-6 sm:grid-cols-[10rem_1fr] sm:gap-8 sm:pl-8"
+            className="relative grid gap-2 border-l border-grid py-5 pl-6 sm:grid-cols-[10rem_1fr] sm:gap-8 sm:pl-8"
           >
-            <span className="absolute -left-[4px] top-7 size-2 rounded-full bg-accent ring-4 ring-[#080808]" />
-            <p className="font-mono text-[10px] uppercase tracking-wider text-neutral-500">
+            <span className="absolute -left-[4px] top-7 size-2 rounded-full bg-accent ring-4 ring-white dark:ring-obsidian" />
+            <p className="font-mono text-[10px] uppercase tracking-wider text-zinc-600 dark:text-zinc-400">
               {milestone.period}
             </p>
             <div>

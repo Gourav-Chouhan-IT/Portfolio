@@ -21,7 +21,7 @@ export default function ArchivePage() {
                 <p className="font-mono text-xs text-muted">
                   {project.year} · {project.status}
                 </p>
-                <h2 className="mt-2 font-serif text-2xl">
+                <h2 className="mt-2 font-serif text-2xl text-primary">
                   {project.slug === "ai-research-tool"
                     ? "Computer Vision Research"
                     : project.name}
@@ -32,7 +32,7 @@ export default function ArchivePage() {
               </div>
               <Link
                 href={project.caseStudy}
-                className="shrink-0 text-sm font-medium text-accent hover:underline"
+                className="shrink-0 text-sm font-medium text-primary hover:text-accent hover:underline dark:text-zinc-200 dark:hover:text-white"
               >
                 View project
               </Link>

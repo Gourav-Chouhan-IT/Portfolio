@@ -6,6 +6,7 @@ import { Navbar } from "@/components/ui/Navbar"
 import { SplashScreen } from "@/components/ui/SplashScreen"
 import { FlowFieldBackground } from "@/components/ui/FlowFieldBackground"
 import { SmoothScroll } from "@/components/SmoothScroll"
+import { ThemeProvider } from "@/components/ThemeProvider"
 import "lenis/dist/lenis.css"
 import "./globals.css"
 
@@ -30,17 +31,19 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable} ${editorialSerif.variable} dark`}
+      className={`${GeistSans.variable} ${GeistMono.variable} ${editorialSerif.variable}`}
       suppressHydrationWarning
     >
       <body className="font-sans text-primary antialiased">
-        <div className="pointer-events-none fixed inset-0 -z-10 h-screen w-screen overflow-hidden">
-          <FlowFieldBackground />
-        </div>
-        <SplashScreen />
-        <Navbar />
-        <SmoothScroll />
-        {children}
+        <ThemeProvider>
+          <div className="pointer-events-none fixed inset-0 -z-10 h-screen w-screen overflow-hidden">
+            <FlowFieldBackground />
+          </div>
+          <SplashScreen />
+          <Navbar />
+          <SmoothScroll />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )

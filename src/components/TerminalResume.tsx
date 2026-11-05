@@ -207,7 +207,7 @@ export function TerminalResume() {
           </p>
         </div>
 
-        <div className="overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0b0c10]/85 shadow-[0_24px_80px_rgba(0,0,0,0.3)] backdrop-blur-md">
+        <div className="terminal-window overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0b0c10]/85 shadow-[0_24px_80px_rgba(0,0,0,0.3)] backdrop-blur-md">
           <div className="flex items-center justify-between border-b border-white/[0.08] bg-white/[0.025] px-4 py-3 sm:px-5">
             <div className="flex items-center gap-2">
               <span className="size-2.5 rounded-full bg-[#ff5f57]" />

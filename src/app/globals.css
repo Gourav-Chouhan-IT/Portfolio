@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   /* ── Fonts ── */
@@ -20,10 +21,10 @@
   --color-accent: #5b82ff;
 
   /* ── Editorial Light ── */
-  --color-paper: #f5f2ec;
-  --color-paper-card: #ffffff;
-  --color-paper-border: #e8e4dc;
-  --color-paper-muted: #999490;
+  --color-paper: #fcf9ea;
+  --color-paper-card: #fcf9ea;
+  --color-paper-border: #97a87a;
+  --color-paper-muted: #495140;
 
   /* ── Letter spacing ── */
   --tracking-widest: 0.25em;
@@ -35,6 +36,29 @@ html {
   color: var(--color-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html.light {
+  color-scheme: light;
+  --color-obsidian: #fcf9ea;
+  --color-surface: #a8bba3;
+  --color-grid: #97a87a;
+  --color-lifted: #a8bba3;
+  --color-primary: #1e2519;
+  --color-muted: #495140;
+  --color-accent: #db9558;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html.light .text-accent {
+  color: #874b24;
+}
+
+html.light .terminal-window .text-accent {
+  color: #5b82ff;
 }
 
 ::selection {

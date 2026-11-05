@@ -130,14 +130,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           Back to work
         </Link>
 
-        <header className="mt-12 border-b border-white/[0.08] pb-10 sm:mt-16 sm:pb-14">
+        <header className="mt-12 border-b border-grid pb-10 sm:mt-16 sm:pb-14">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
             {project.id} / {project.year} / {project.status}
           </p>
           <h1 className="mt-4 font-serif text-5xl leading-[0.95] sm:text-7xl lg:text-8xl">
             {project.name}
           </h1>
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-neutral-300 sm:text-xl">
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-muted sm:text-xl">
             {project.descriptor}
           </p>
           <p className="mt-4 max-w-2xl leading-7 text-muted">
@@ -159,7 +159,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2.5 text-sm text-primary transition-colors hover:border-accent/50"
+                className="inline-flex items-center gap-2 rounded-full border border-grid bg-obsidian px-4 py-2.5 text-sm text-primary transition-colors hover:border-accent/50 hover:text-accent dark:border-white/10 dark:bg-white/[0.03] dark:text-zinc-200 dark:hover:text-white"
               >
                 View source <ArrowUpRight size={15} />
               </a>
@@ -167,7 +167,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </div>
         </header>
 
-        <section className="grid gap-6 border-b border-white/[0.08] py-10 sm:grid-cols-[minmax(10rem,0.65fr)_1.35fr] sm:gap-10 sm:py-12">
+        <section className="grid gap-6 border-b border-grid py-10 sm:grid-cols-[minmax(10rem,0.65fr)_1.35fr] sm:gap-10 sm:py-12">
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
               01 / System design
@@ -178,18 +178,18 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             {study.architecture.map((item, index) => (
               <li
                 key={item}
-                className="flex gap-4 rounded-xl border border-white/[0.08] bg-[#0c0c0e]/40 p-4 backdrop-blur-md sm:p-5"
+                className="flex gap-4 rounded-xl border border-grid bg-obsidian p-4 backdrop-blur-md dark:border-white/[0.08] dark:bg-white/[0.03] sm:p-5"
               >
-                <span className="font-mono text-xs text-neutral-500">
+                <span className="font-mono text-xs text-muted">
                   0{index + 1}
                 </span>
-                <p className="text-sm leading-6 text-neutral-300">{item}</p>
+                <p className="text-sm leading-6 text-muted">{item}</p>
               </li>
             ))}
           </ol>
         </section>
 
-        <section className="grid gap-6 border-b border-white/[0.08] py-10 sm:grid-cols-[minmax(10rem,0.65fr)_1.35fr] sm:gap-10 sm:py-12">
+        <section className="grid gap-6 border-b border-grid py-10 sm:grid-cols-[minmax(10rem,0.65fr)_1.35fr] sm:gap-10 sm:py-12">
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
               02 / Problem solving
@@ -200,7 +200,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             {study.challenges.map((item) => (
               <li
                 key={item}
-                className="border-l border-accent/50 pl-4 text-sm leading-7 text-neutral-300"
+                className="border-l border-accent/50 pl-4 text-sm leading-7 text-muted"
               >
                 {item}
               </li>
@@ -208,7 +208,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           </ul>
         </section>
 
-        <section className="grid gap-6 border-b border-white/[0.08] py-10 sm:grid-cols-[minmax(10rem,0.65fr)_1.35fr] sm:gap-10 sm:py-12">
+        <section className="grid gap-6 border-b border-grid py-10 sm:grid-cols-[minmax(10rem,0.65fr)_1.35fr] sm:gap-10 sm:py-12">
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
               03 / Decisions
@@ -219,7 +219,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             {study.tradeoffs.map((item) => (
               <li
                 key={item}
-                className="rounded-xl border border-white/[0.08] bg-[#0c0c0e]/40 p-4 text-sm leading-7 text-neutral-300 backdrop-blur-md sm:p-5"
+                className="rounded-xl border border-grid bg-obsidian p-4 text-sm leading-7 text-muted backdrop-blur-md dark:border-white/[0.08] dark:bg-white/[0.03] sm:p-5"
               >
                 {item}
               </li>
@@ -238,7 +238,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             {project.stack.map((technology) => (
               <li
                 key={technology}
-                className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 font-mono text-xs text-neutral-300"
+                className="rounded-full border border-grid bg-lifted px-3 py-1.5 font-mono text-xs text-primary dark:border-white/10 dark:bg-white/5 dark:text-zinc-300"
               >
                 {technology}
               </li>

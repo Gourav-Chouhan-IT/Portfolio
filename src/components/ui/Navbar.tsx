@@ -2,8 +2,9 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { ArrowUpRight, Menu, Moon, X } from "lucide-react"
+import { ArrowUpRight, Menu, Moon, Sun, X } from "lucide-react"
 import { useState, useEffect } from "react"
+import { useTheme } from "@/components/ThemeProvider"
 import { NAV_LINKS } from "@/lib/constants"
 
 function getNavigationHref(href: string) {
@@ -13,13 +14,19 @@ function getNavigationHref(href: string) {
 
 export function Navbar() {
   const pathname = usePathname()
+  const { theme, setTheme } = useTheme()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    const mountFrame = window.requestAnimationFrame(() => setMounted(true))
     const handleScroll = () => setScrolled(window.scrollY > 80)
     window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    return () => {
+      window.cancelAnimationFrame(mountFrame)
+      window.removeEventListener("scroll", handleScroll)
+    }
   }, [])
 
   return (
@@ -71,13 +78,33 @@ export function Navbar() {
         </ul>
 
         <div className="flex shrink-0 items-center gap-4">
-          <span
-            aria-label="Theme is fixed to obsidian dark mode"
-            className="inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-widest text-neutral-500"
+          <button
+            type="button"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            disabled={!mounted}
+            className="rounded-full p-2 text-muted transition-colors hover:bg-lifted hover:text-primary dark:hover:bg-white/10 disabled:cursor-default"
+            aria-label={
+              !mounted
+                ? "Toggle color theme"
+                : theme === "dark"
+                  ? "Switch to light mode"
+                  : "Switch to obsidian dark mode"
+            }
+            aria-pressed={mounted && theme === "light"}
+            title={
+              mounted
+                ? theme === "dark"
+                  ? "Switch to light mode"
+                  : "Switch to obsidian dark mode"
+                : undefined
+            }
           >
-            <Moon size={14} />
-            <span className="hidden sm:inline">Obsidian</span>
-          </span>
+            {mounted && theme === "light" ? (
+              <Moon className="h-4 w-4" aria-hidden="true" />
+            ) : (
+              <Sun className="h-4 w-4" aria-hidden="true" />
+            )}
+          </button>
           <button
             type="button"
             onClick={() => setMenuOpen((open) => !open)}

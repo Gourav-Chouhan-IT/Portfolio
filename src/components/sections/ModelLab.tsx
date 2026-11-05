@@ -173,11 +173,11 @@ export function ModelLab({
   }
 
   return (
-    <div className="mt-10 overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0c0c0e]/40 backdrop-blur-md sm:mt-14">
+    <div className="mt-10 overflow-hidden rounded-2xl border border-grid bg-obsidian backdrop-blur-md dark:border-white/[0.08] dark:bg-white/[0.03] sm:mt-14">
       <div
         role="tablist"
         aria-label="Computer vision experiments"
-        className="flex flex-wrap gap-2 border-b border-white/[0.08] p-3 sm:p-4"
+        className="flex flex-wrap gap-2 border-b border-black/[0.08] p-3 dark:border-white/[0.08] sm:p-4"
       >
         <button
           type="button"
@@ -186,8 +186,8 @@ export function ModelLab({
           onClick={() => chooseMode("plant")}
           className={`rounded-full px-4 py-2 font-mono text-xs transition-colors ${
             mode === "plant"
-              ? "bg-accent text-white"
-              : "border border-white/10 text-neutral-400 hover:text-white"
+              ? "bg-accent text-primary dark:text-white"
+              : "border border-grid text-primary hover:border-accent hover:text-accent dark:border-white/10 dark:text-zinc-400 dark:hover:text-white"
           }`}
         >
           Plant classification
@@ -199,8 +199,8 @@ export function ModelLab({
           onClick={() => chooseMode("detection")}
           className={`rounded-full px-4 py-2 font-mono text-xs transition-colors ${
             mode === "detection"
-              ? "bg-accent text-white"
-              : "border border-white/10 text-neutral-400 hover:text-white"
+              ? "bg-accent text-primary dark:text-white"
+              : "border border-grid text-primary hover:border-accent hover:text-accent dark:border-white/10 dark:text-zinc-400 dark:hover:text-white"
           }`}
         >
           YOLOv8s detection
@@ -242,8 +242,8 @@ export function ModelLab({
                 }}
                 className={`group overflow-hidden rounded-xl border text-left transition-colors ${
                   selectedSample === sample.id
-                    ? "border-accent/70 bg-accent/10"
-                    : "border-white/[0.08] bg-white/[0.02] hover:border-white/20"
+                    ? "border-accent bg-lifted"
+                    : "border-grid bg-lifted hover:border-accent dark:border-white/[0.08] dark:bg-white/[0.02] dark:hover:border-white/20"
                 }`}
               >
                 <span className="relative block aspect-[16/8] overflow-hidden">
@@ -257,10 +257,10 @@ export function ModelLab({
                   />
                 </span>
                 <span className="block p-3">
-                  <span className="block text-sm text-neutral-200">
+                  <span className="block text-sm text-primary">
                     {sample.label}
                   </span>
-                  <span className="mt-1 block font-mono text-[10px] text-neutral-500">
+                  <span className="mt-1 block font-mono text-[10px] text-muted">
                     {sample.detail}
                   </span>
                 </span>
@@ -268,10 +268,10 @@ export function ModelLab({
             ))}
           </div>
 
-          <label className="mt-4 flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-dashed border-white/15 px-4 py-4 text-sm text-neutral-300 transition-colors hover:border-accent/60 hover:text-white">
+          <label className="mt-4 flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-dashed border-grid px-4 py-4 text-sm text-primary transition-colors hover:border-accent hover:text-accent dark:border-white/15 dark:text-zinc-300 dark:hover:text-white">
             <Upload size={16} />
             <span>{selectedFile ? selectedFile.name : "Upload a JPG or PNG"}</span>
-            <span className="font-mono text-[10px] text-neutral-500">
+            <span className="font-mono text-[10px] text-muted">
               Max 5 MB
             </span>
             <input
@@ -290,17 +290,17 @@ export function ModelLab({
 
         <div className="flex flex-col">
           <div className="flex items-center justify-between">
-            <h3 className="font-mono text-[10px] uppercase tracking-[0.18em] text-neutral-400">
+            <h3 className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted">
               Evaluation panel
             </h3>
-            <span className="rounded-full border border-white/10 px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider text-neutral-500">
+            <span className="rounded-full border border-grid px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider text-muted dark:border-white/10 dark:text-zinc-400">
               Preview
             </span>
           </div>
 
-          <div className="mt-3 flex min-h-52 flex-1 flex-col rounded-xl border border-white/[0.08] bg-black/20 p-4">
+          <div className="mt-3 flex min-h-52 flex-1 flex-col rounded-xl border border-grid bg-lifted p-4 dark:border-white/[0.08] dark:bg-black/20">
             {previewSrc ? (
-              <div className="relative min-h-36 flex-1 overflow-hidden rounded-lg border border-white/[0.06]">
+              <div className="relative min-h-36 flex-1 overflow-hidden rounded-lg border border-grid dark:border-white/[0.06]">
                 <Image
                   src={previewSrc}
                   alt={selectedFile?.name ?? activeSample?.label ?? "Selected sample"}
@@ -311,8 +311,8 @@ export function ModelLab({
                 />
               </div>
             ) : (
-              <div className="grid min-h-36 flex-1 place-items-center rounded-lg border border-dashed border-white/10 text-center">
-                <p className="max-w-xs px-4 text-sm leading-6 text-neutral-500">
+              <div className="grid min-h-36 flex-1 place-items-center rounded-lg border border-dashed border-grid text-center dark:border-white/10">
+                <p className="max-w-xs px-4 text-sm leading-6 text-muted">
                   Select a sample or upload an image to prepare an experiment.
                 </p>
               </div>
@@ -324,14 +324,14 @@ export function ModelLab({
                 aria-label="Checking inference service"
                 className="mt-4 space-y-2"
               >
-                <div className="h-3 w-2/3 animate-pulse rounded bg-white/10" />
-                <div className="h-3 w-1/2 animate-pulse rounded bg-white/[0.07]" />
-                <div className="h-3 w-3/4 animate-pulse rounded bg-white/[0.05]" />
+                <div className="h-3 w-2/3 animate-pulse rounded bg-obsidian dark:bg-white/10" />
+                <div className="h-3 w-1/2 animate-pulse rounded bg-obsidian dark:bg-white/[0.07]" />
+                <div className="h-3 w-3/4 animate-pulse rounded bg-obsidian dark:bg-white/[0.05]" />
               </div>
             ) : requestMessage ? (
               <p
                 role="status"
-                className="mt-4 rounded-lg border border-amber-300/15 bg-amber-200/[0.04] p-3 text-xs leading-5 text-amber-100/80"
+                className="mt-4 rounded-lg border border-amber-700/20 bg-amber-50 p-3 text-xs leading-5 text-amber-800 dark:border-amber-300/15 dark:bg-amber-200/[0.04] dark:text-amber-100/80"
               >
                 {requestMessage}
               </p>
@@ -340,19 +340,19 @@ export function ModelLab({
                 {modelNames[mode].map((model) => (
                   <div
                     key={model}
-                    className="rounded-lg border border-white/[0.07] bg-white/[0.02] p-3"
+                    className="rounded-lg border border-grid bg-obsidian p-3 dark:border-white/[0.07] dark:bg-white/[0.02]"
                   >
-                    <p className="font-mono text-[10px] text-neutral-300">
+                    <p className="font-mono text-[10px] text-primary dark:text-zinc-300">
                       {model}
                     </p>
-                    <p className="mt-2 inline-flex items-center gap-1.5 font-mono text-[9px] text-amber-200/75">
+                    <p className="mt-2 inline-flex items-center gap-1.5 font-mono text-[9px] text-amber-700 dark:text-amber-200/75">
                       <span className="size-1.5 rounded-full bg-amber-300/80" />
                       Weights not loaded
                     </p>
-                    <p className="mt-1 font-mono text-[9px] text-neutral-600">
+                    <p className="mt-1 font-mono text-[9px] text-muted">
                       {mode === "plant" ? "Accuracy —" : "mAP —"}
                     </p>
-                    <p className="mt-1 font-mono text-[9px] text-neutral-600">
+                    <p className="mt-1 font-mono text-[9px] text-muted">
                       Inference backend not connected
                     </p>
                   </div>
@@ -370,7 +370,7 @@ export function ModelLab({
             <WandSparkles size={16} />
             {requestState === "loading" ? "Checking service…" : "Run experiment"}
           </button>
-          <p className="mt-2 text-center font-mono text-[9px] text-neutral-600">
+          <p className="mt-2 text-center font-mono text-[9px] text-muted">
             Predictions require a configured model inference service.
           </p>
         </div>

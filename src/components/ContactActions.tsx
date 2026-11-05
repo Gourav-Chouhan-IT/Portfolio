@@ -27,7 +27,7 @@ export function ContactActions() {
       <div className="mt-8 flex flex-wrap items-center gap-3">
         <a
           href={`mailto:${PERSON.email}`}
-          className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-primary transition-colors hover:border-accent/50 hover:text-accent"
+          className="inline-flex items-center gap-2 rounded-xl border border-grid bg-obsidian px-4 py-3 text-sm text-primary transition-colors hover:border-accent/50 hover:text-accent dark:border-white/10 dark:bg-white/[0.04] dark:text-zinc-100"
         >
           <Mail size={17} />
           {PERSON.email}
@@ -35,7 +35,7 @@ export function ContactActions() {
         <button
           type="button"
           onClick={copyEmail}
-          className="inline-flex items-center gap-2 rounded-xl border border-white/10 px-4 py-3 text-sm text-neutral-300 transition-colors hover:border-accent/50 hover:text-white"
+          className="inline-flex items-center gap-2 rounded-xl border border-grid px-4 py-3 text-sm text-primary transition-colors hover:border-accent/50 hover:text-accent dark:border-white/10 dark:text-zinc-300 dark:hover:text-white"
         >
           {copyStatus === "Email copied." ? (
             <Check size={16} />
@@ -54,7 +54,7 @@ export function ContactActions() {
           href={PERSON.github}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] px-4 py-2.5 text-sm text-neutral-300 transition-colors hover:border-accent/50 hover:text-white"
+          className="inline-flex items-center gap-2 rounded-full border border-grid bg-obsidian px-4 py-2.5 text-sm text-primary transition-colors hover:border-accent/50 hover:text-accent dark:border-white/[0.08] dark:bg-transparent dark:text-zinc-300 dark:hover:text-white"
         >
           <Code2 size={16} />
           GitHub
@@ -63,7 +63,7 @@ export function ContactActions() {
           href={PERSON.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] px-4 py-2.5 text-sm text-neutral-300 transition-colors hover:border-accent/50 hover:text-white"
+          className="inline-flex items-center gap-2 rounded-full border border-grid bg-obsidian px-4 py-2.5 text-sm text-primary transition-colors hover:border-accent/50 hover:text-accent dark:border-white/[0.08] dark:bg-transparent dark:text-zinc-300 dark:hover:text-white"
         >
           <BriefcaseBusiness size={16} />
           LinkedIn
