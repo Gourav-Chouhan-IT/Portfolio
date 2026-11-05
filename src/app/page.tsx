@@ -1,6 +1,8 @@
 import Link from "next/link"
 import { PERSON, STACK } from "@/lib/constants"
 import { FeaturedProjects } from "@/components/sections/FeaturedProjects"
+import { TerminalResume } from "@/components/TerminalResume"
+import { ResumeLink } from "@/components/ui/ResumeLink"
 
 export default function Home() {
   return (
@@ -53,7 +55,7 @@ export default function Home() {
                 LinkedIn
               </a>
               <a href={`mailto:${PERSON.email}`}>Email</a>
-              <a href={PERSON.resumeUrl}>Résumé</a>
+              <ResumeLink />
             </div>
           </div>
 
@@ -91,6 +93,7 @@ export default function Home() {
         </div>
       </section>
       <FeaturedProjects />
+      <TerminalResume />
     </main>
   )
 }

@@ -5,6 +5,8 @@ import { Cormorant_Garamond } from "next/font/google"
 import { Navbar } from "@/components/ui/Navbar"
 import { SplashScreen } from "@/components/ui/SplashScreen"
 import { FlowFieldBackground } from "@/components/ui/FlowFieldBackground"
+import { SmoothScroll } from "@/components/SmoothScroll"
+import "lenis/dist/lenis.css"
 import "./globals.css"
 
 const editorialSerif = Cormorant_Garamond({
@@ -37,6 +39,7 @@ export default function RootLayout({
         </div>
         <SplashScreen />
         <Navbar />
+        <SmoothScroll />
         {children}
       </body>
     </html>

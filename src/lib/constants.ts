@@ -8,10 +8,11 @@ export const PERSON = {
   degree: "B.Tech Computer Science",
   cgpa: "8.22",
   year: "3rd Year · 2024–2028",
-  resumeUrl: "/resume.pdf",
+  resumeUrl:
+    "https://drive.google.com/file/d/1sQBJYWUI4hvpdlifgypMAbWW0OnRvoyS/view?usp=sharing",
   currentlyBuilding: {
-    name: "Portfolio Website",
-    description: "The one you're looking at right now",
+    name: "DSA & CommHub",
+    description: "Studying data structures and algorithms while building CommHub",
     github: "https://github.com/Gourav-Chouhan-IT/Portfolio",
   },
 } as const
@@ -36,7 +37,7 @@ export const PROJECTS = [
     caseStudy: "/projects/reelify",
     live: "https://reelify-six.vercel.app",
     github: "https://github.com/Gourav-Chouhan-IT",
-    year: "2025",
+    year: "2026",
   },
   {
     id: "02",
@@ -75,9 +76,26 @@ export const PROJECTS = [
     caseStudy: "/projects/focus-map",
     live: null,
     github: "https://github.com/Gourav-Chouhan-IT/Focus-Map",
-    year: "2024",
+    year: "2025",
   },
 ] as const
+
+export const HISTORICAL_PROJECTS = [
+  {
+    id: "05",
+    slug: "health-dashboard",
+    name: "Health Dashboard",
+    descriptor: "Real-time biometric monitoring from Arduino sensors to a React dashboard",
+    stack: ["React", "Socket.IO", "Arduino", "Node.js"],
+    status: "Archived",
+    caseStudy: "/projects/health-dashboard",
+    live: null,
+    github: null,
+    year: "2025",
+  },
+] as const
+
+export const ARCHIVE_PROJECTS = [...PROJECTS, ...HISTORICAL_PROJECTS]
 
 export const STACK = [
   "Next.js",

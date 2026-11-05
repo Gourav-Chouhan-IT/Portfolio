@@ -1,55 +1,31 @@
-import Link from "next/link"
-import { PROJECTS } from "@/lib/constants"
+"use client"
+
+import { useState } from "react"
+import { ModelLab } from "@/components/sections/ModelLab"
 
 export default function LabPage() {
-  const researchProjects = PROJECTS.filter(
-    (project) => project.slug === "ai-research-tool",
-  )
+  const [activeTab, setActiveTab] = useState(0)
 
   return (
-    <main className="min-h-screen bg-obsidian px-6 pb-20 pt-36 text-primary sm:px-10 lg:px-14">
-      <section className="mx-auto max-w-4xl">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
-          Lab
+    <main className="min-h-screen px-6 pb-24 pt-36 text-primary sm:px-10 lg:px-14">
+      <section className="mx-auto max-w-7xl">
+        <p
+          aria-live="polite"
+          className="font-mono text-xs uppercase tracking-[0.2em] text-accent"
+        >
+          The Lab / 0{activeTab + 1}
         </p>
-        <h1 className="mt-4 font-serif text-5xl sm:text-7xl">
-          Experiments &amp; research
-        </h1>
-        <p className="mt-6 max-w-2xl leading-7 text-muted">
-          A space for technical explorations, prototypes, and research in
-          progress.
-        </p>
-        <div className="mt-10 grid gap-4">
-          {researchProjects.length > 0 ? (
-            researchProjects.map((project) => (
-              <article
-                key={project.slug}
-                className="rounded-xl border border-grid bg-surface p-6"
-              >
-                <p className="font-mono text-xs uppercase tracking-widest text-muted">
-                  {project.year} · {project.status}
-                </p>
-                <h2 className="mt-3 font-serif text-3xl">{project.name}</h2>
-                <p className="mt-3 leading-7 text-muted">
-                  {project.descriptor}
-                </p>
-                <p className="mt-4 font-mono text-xs leading-6 text-muted">
-                  {project.stack.join(" · ")}
-                </p>
-                <Link
-                  href={project.caseStudy}
-                  className="mt-5 inline-block text-sm font-medium text-accent hover:underline"
-                >
-                  View research
-                </Link>
-              </article>
-            ))
-          ) : (
-            <p className="rounded-xl border border-grid bg-surface p-6 text-muted">
-              New experiments will be added here soon.
-            </p>
-          )}
+        <div className="mt-4 grid gap-5 sm:mt-6 sm:grid-cols-[1.2fr_0.8fr] sm:items-end">
+          <h1 className="font-serif text-5xl leading-[0.95] sm:text-7xl lg:text-8xl">
+            Experiments in vision.
+          </h1>
+          <p className="max-w-lg leading-7 text-muted sm:justify-self-end">
+            Model benchmarks and computer-vision prototypes. Choose an
+            experiment, inspect the sample inputs, and explore the inference
+            interface.
+          </p>
         </div>
+        <ModelLab activeTab={activeTab} onTabChange={setActiveTab} />
       </section>
     </main>
   )
