@@ -187,7 +187,7 @@ export function FlowFieldBackground() {
         context.moveTo(blueSegments[index]!, blueSegments[index + 1]!)
         context.lineTo(blueSegments[index + 2]!, blueSegments[index + 3]!)
       }
-      context.strokeStyle = "rgba(91, 130, 255, 0.29)"
+      context.strokeStyle = "rgba(91, 130, 255, 0.5)"
       context.stroke()
 
       context.beginPath()
@@ -195,7 +195,7 @@ export function FlowFieldBackground() {
         context.moveTo(lightSegments[index]!, lightSegments[index + 1]!)
         context.lineTo(lightSegments[index + 2]!, lightSegments[index + 3]!)
       }
-      context.strokeStyle = "rgba(240, 238, 230, 0.18)"
+      context.strokeStyle = "rgba(240, 238, 230, 0.34)"
       context.stroke()
 
       time += 0.0015
@@ -252,7 +252,7 @@ export function FlowFieldBackground() {
     <canvas
       ref={canvasRef}
       aria-hidden="true"
-      className="absolute inset-0 h-full w-full"
+      className="absolute inset-0 z-0 h-full w-full pointer-events-none"
     />
   )
 }

@@ -37,7 +37,7 @@ export default function RootLayout({
     >
       <body className="no-scrollbar overflow-x-hidden bg-obsidian font-sans text-primary antialiased">
         <ThemeProvider>
-          <div className="pointer-events-none fixed inset-0 -z-10 h-screen w-screen overflow-hidden">
+          <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
             <FlowFieldBackground />
           </div>
           <SplashScreen />
