@@ -24,6 +24,9 @@ export const metadata: Metadata = {
     template: "%s · Gourav Chouhan",
   },
   description: "Portfolio of Gourav Chouhan.",
+  icons: {
+    icon: "/gc-favicon.png?v=2",
+  },
 }
 
 export default function RootLayout({
