@@ -123,7 +123,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     <main className="min-h-screen px-6 pb-24 pt-36 text-primary sm:px-10 lg:px-14">
       <article className="mx-auto max-w-6xl">
         <Link
-          href="/#work"
+          href="/work"
           className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:text-primary"
         >
           <ArrowLeft size={14} />

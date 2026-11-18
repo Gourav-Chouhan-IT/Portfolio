@@ -7,9 +7,10 @@ import { useState, useEffect } from "react"
 import { useTheme } from "@/components/ThemeProvider"
 import { NAV_LINKS } from "@/lib/constants"
 
-function getNavigationHref(href: string) {
-  const [pathname, hash] = href.split("#", 2)
-  return hash ? `${pathname || "/"}#${hash}` : href
+function isNavigationLinkActive(href: string, pathname: string) {
+  return href === "/work"
+    ? pathname === href || pathname.startsWith("/projects/")
+    : pathname === href
 }
 
 export function Navbar() {
@@ -18,7 +19,6 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
-  const [activeSection, setActiveSection] = useState<string | null>(null)
 
   useEffect(() => {
     const mountFrame = window.requestAnimationFrame(() => setMounted(true))
@@ -29,38 +29,6 @@ export function Navbar() {
       window.removeEventListener("scroll", handleScroll)
     }
   }, [])
-
-  useEffect(() => {
-    if (!mounted || pathname !== "/") return
-
-    let observer: IntersectionObserver | undefined
-    const frame = window.requestAnimationFrame(() => {
-      const workSection = document.getElementById("work")
-      if (!workSection) return
-
-      observer = new IntersectionObserver(
-        ([entry]) => {
-          if (!entry) return
-          const rect = entry.boundingClientRect
-          const crossesViewportThreshold =
-            rect.top < window.innerHeight * 0.85 && rect.bottom > 0
-          setActiveSection(
-            entry.isIntersecting && crossesViewportThreshold ? "work" : null,
-          )
-        },
-        {
-          rootMargin: "-15% 0px -15% 0px",
-          threshold: 0.1,
-        },
-      )
-      observer.observe(workSection)
-    })
-
-    return () => {
-      window.cancelAnimationFrame(frame)
-      observer?.disconnect()
-    }
-  }, [mounted, pathname])
 
   return (
     <nav
@@ -80,12 +48,8 @@ export function Navbar() {
 
         <ul className="hidden items-center gap-x-5 lg:flex">
           {NAV_LINKS.map((link) => {
-            const href = getNavigationHref(link.href)
-            const [linkPathname, linkHash] = href.split("#", 2)
-            const linkPath = linkPathname || "/"
-            const isActive = linkHash
-              ? pathname === linkPath && activeSection === linkHash
-              : pathname === linkPath
+            const href = link.href
+            const isActive = isNavigationLinkActive(href, pathname)
 
             return (
               <li key={link.label}>
@@ -162,12 +126,8 @@ export function Navbar() {
           className="mt-4 flex flex-col gap-1 border-t border-grid pt-3 lg:hidden"
         >
           {NAV_LINKS.map((link) => {
-            const href = getNavigationHref(link.href)
-            const [linkPathname, linkHash] = href.split("#", 2)
-            const linkPath = linkPathname || "/"
-            const isActive = linkHash
-              ? pathname === linkPath && activeSection === linkHash
-              : pathname === linkPath
+            const href = link.href
+            const isActive = isNavigationLinkActive(href, pathname)
 
             return (
               <li key={link.label}>

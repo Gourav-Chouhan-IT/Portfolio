@@ -114,7 +114,7 @@ export const STACK = [
 
 export const NAV_LINKS = [
   { label: "About", href: "/about", external: false },
-  { label: "Work", href: "/#work", external: false },
+  { label: "Work", href: "/work", external: false },
   { label: "Lab", href: "/lab", external: false },
   { label: "Archive", href: "/archive", external: false },
   { label: "Contact", href: "/contact", external: false },

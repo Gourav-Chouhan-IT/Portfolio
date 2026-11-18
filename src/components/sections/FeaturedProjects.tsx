@@ -134,27 +134,33 @@ function ProjectCard({ project }: { project: (typeof PROJECTS)[number] }) {
   )
 }
 
-export function FeaturedProjects() {
+export function FeaturedProjects({ showHeader = true }: { showHeader?: boolean }) {
   return (
     <section
       id="work"
-      className="px-6 py-20 sm:px-10 sm:py-28 lg:px-14"
+      className={
+        showHeader
+          ? "px-6 py-20 sm:px-10 sm:py-28 lg:px-14"
+          : "px-6 pb-20 pt-10 sm:px-10 sm:pb-28 lg:px-14"
+      }
     >
       <div className="mx-auto max-w-7xl">
-        <div className="mb-10 flex flex-col gap-4 sm:mb-14 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
-              Selected work
+        {showHeader && (
+          <div className="mb-10 flex flex-col gap-4 sm:mb-14 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
+                Selected work
+              </p>
+              <h2 className="mt-3 font-serif text-4xl leading-tight text-primary sm:text-5xl">
+                Projects with purpose.
+              </h2>
+            </div>
+            <p className="max-w-md text-sm leading-6 text-muted sm:text-right">
+              A selection of products, experiments, and systems I’ve been
+              building.
             </p>
-            <h2 className="mt-3 font-serif text-4xl leading-tight text-primary sm:text-5xl">
-              Projects with purpose.
-            </h2>
           </div>
-          <p className="max-w-md text-sm leading-6 text-muted sm:text-right">
-            A selection of products, experiments, and systems I’ve been
-            building.
-          </p>
-        </div>
+        )}
 
         <div className="flex flex-col gap-6">
           {PROJECTS.map((project) => (

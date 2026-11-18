@@ -95,7 +95,7 @@ export function Hero() {
 
           <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4 sm:mt-8">
             <Link
-              href="/#work"
+              href="/work"
               className="rounded-md bg-primary px-5 py-3 text-sm font-semibold text-obsidian transition-colors hover:bg-accent hover:text-primary"
             >
               See my work
