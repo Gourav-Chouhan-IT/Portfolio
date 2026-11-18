@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { ArrowUpRight, Menu, Moon, Sun, X } from "lucide-react"
@@ -41,41 +42,17 @@ export function Navbar() {
       <div className="flex w-full items-center justify-between gap-4">
         <Link
           href="/"
-          className="inline-flex shrink-0 items-center gap-2 font-mono text-sm text-primary transition-colors duration-200 hover:text-accent"
+          aria-label="Gourav Chouhan home"
+          className="inline-flex shrink-0 items-center transition-opacity duration-200 hover:opacity-80"
         >
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 64 64"
-            className="size-6"
-            fill="none"
-          >
-            <rect
-              x="2"
-              y="2"
-              width="60"
-              height="60"
-              rx="16"
-              fill="#0B0C10"
-              stroke="#5B82FF"
-              strokeOpacity=".55"
-              strokeWidth="2"
-            />
-            <path
-              d="M31 19h-8a11 11 0 0 0-11 11v5a11 11 0 0 0 11 11h3a8 8 0 0 0 8-8v-3h-9"
-              stroke="#F4F4F6"
-              strokeWidth="5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M55 22a13 13 0 1 0 0 22"
-              stroke="#5B82FF"
-              strokeWidth="5"
-              strokeLinecap="round"
-            />
-            <circle cx="51" cy="14" r="4" fill="#DB9558" />
-          </svg>
-          GC
+          <Image
+            src="/gc-logo.jpg"
+            alt="Gourav Chouhan logo"
+            width={86}
+            height={48}
+            priority
+            className="h-8 w-auto rounded-sm object-contain"
+          />
         </Link>
 
         <ul className="hidden items-center gap-x-5 lg:flex">
