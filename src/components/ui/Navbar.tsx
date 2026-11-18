@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { ArrowUpRight, Menu, Moon, Sun, X } from "lucide-react"
@@ -43,16 +42,9 @@ export function Navbar() {
         <Link
           href="/"
           aria-label="Gourav Chouhan home"
-          className="inline-flex shrink-0 items-center transition-opacity duration-200 hover:opacity-80"
+          className="shrink-0 font-mono text-sm text-primary transition-colors duration-200 hover:text-accent"
         >
-          <Image
-            src="/gc-logo.jpg"
-            alt="Gourav Chouhan logo"
-            width={86}
-            height={48}
-            priority
-            className="h-8 w-auto rounded-sm object-contain"
-          />
+          GC
         </Link>
 
         <ul className="hidden items-center gap-x-5 lg:flex">
