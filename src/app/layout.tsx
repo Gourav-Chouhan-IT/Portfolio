@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   description: "Portfolio of Gourav Chouhan.",
   icons: {
-    icon: "/gc-favicon.png?v=2",
+    icon: "/gc-logo.svg?v=3",
   },
 }
 
