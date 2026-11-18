@@ -1,4 +1,9 @@
+import type { Metadata } from "next"
 import { ModelLab } from "@/components/sections/ModelLab"
+
+export const metadata: Metadata = {
+  title: "Lab",
+}
 
 export default function LabPage() {
   return (

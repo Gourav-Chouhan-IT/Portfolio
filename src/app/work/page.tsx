@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { FeaturedProjects } from "@/components/sections/FeaturedProjects"
 
 export const metadata: Metadata = {
-  title: "Work — Gourav Chouhan",
+  title: "Work",
 }
 
 export default function WorkPage() {

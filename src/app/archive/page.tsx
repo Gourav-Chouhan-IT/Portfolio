@@ -1,5 +1,10 @@
+import type { Metadata } from "next"
 import Link from "next/link"
 import { ARCHIVE_PROJECTS } from "@/lib/constants"
+
+export const metadata: Metadata = {
+  title: "Archive",
+}
 
 export default function ArchivePage() {
   return (

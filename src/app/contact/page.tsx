@@ -1,6 +1,11 @@
+import type { Metadata } from "next"
 import { ArrowUpRight, Mail } from "lucide-react"
 import { ContactForm } from "@/components/ContactForm"
 import { PERSON } from "@/lib/constants"
+
+export const metadata: Metadata = {
+  title: "Contact",
+}
 
 export default function ContactPage() {
   return (

@@ -19,7 +19,10 @@ const editorialSerif = Cormorant_Garamond({
 })
 
 export const metadata: Metadata = {
-  title: "Gourav Chouhan — Full-Stack Developer & ML Researcher",
+  title: {
+    default: "Gourav Chouhan · Software & ML Engineer",
+    template: "%s · Gourav Chouhan",
+  },
   description: "Portfolio of Gourav Chouhan.",
 }
 

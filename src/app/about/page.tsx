@@ -1,6 +1,11 @@
+import type { Metadata } from "next"
 import Image from "next/image"
 import { PERSON, STACK } from "@/lib/constants"
 import { Timeline } from "@/components/Timeline"
+
+export const metadata: Metadata = {
+  title: "About",
+}
 
 export default function AboutPage() {
   return (
